@@ -1,0 +1,40 @@
+/* ============ COMMON STYLES ============== */
+
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    cursor: url("/cursor.png"), pointer;
+}
+
+.hw-title {
+text-align: center;
+margin-top: 30px;
+margin-bottom: 30px;
+}
+
+.gallery {
+    max-width: 1128px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+transition: transform 250ms linear;
+}
+
+.gallery-item:hover {
+    transform: scale(105%);
+}
