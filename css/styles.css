@@ -13,7 +13,7 @@ img {
 
 a {
     text-decoration: none;
-    cursor: url("/cursor.png"), pointer;
+    cursor: url("../images/cursor.png"), pointer;
 }
 
 .hw-title {
