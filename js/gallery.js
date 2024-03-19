@@ -85,23 +85,24 @@ const images = [
   function handleModalOpen (event) {
     event.preventDefault();
 
-    if(event.currentTarget === event.target) return;    
+    // if(event.currentTarget === event.target) return;  
+    // ця перевірка невірна, це не допомагає нам визначити, чи було клікнуто на зображенні. Ідея полягає в тому, щоб перевірити, чи елемент, по якому було здійснено клік (event.target), є зображенням.
+
+    // Краще так 
+    if(!event.target.classList.contains("gallery-image")) return;
+
+    // Або ще так
+    // if((event.target.nodeName !== 'IMG')) return;
   
     const currentImg = event.target
     const imgDefined = currentImg.dataset.source
     const findedImg = images.find(({original}) => original === imgDefined)
 
-  const instance = basicLightbox.create(`
-	<div class="modal">
-    <img src="${findedImg.original}" alt="${findedImg.description}">
-  </div>
-`);
+  const instance = basicLightbox.create(
+    `<img class="modal" src="${findedImg.original}" alt="${findedImg.description}">`
+);
 
 instance.show()
-
-// Тут зробив закривання модального вікна по кліку по великому зображеню як на відео-прикладі. 
-// Чи правильно я прописав закривання? Тобто звертаємось до модального вікна потім додаємо слухача ну і далі фунція. 
-// Чи можливо зробити простіше, так би мовити в одну строку? Дякую!
 
 const closeImg = document.querySelector(".modal")
 closeImg.addEventListener("click", closeHandler);
@@ -109,4 +110,3 @@ function closeHandler() {
   instance.close()
 }
 }
-
